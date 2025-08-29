@@ -6,10 +6,10 @@
     "lit-html",
     "web-components"
   ],
-  "homepage": "https://github.com/Neovici/lightbox#readme",
+  "homepage": "https://github.com/Neovici/cosmoz-lightbox#readme",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Neovici/lightbox.git"
+    "url": "git+https://github.com/Neovici/cosmoz-lightbox.git"
   },
   "license": "Apache-2.0",
   "author": "",
