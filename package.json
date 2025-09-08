@@ -79,7 +79,7 @@
     "@semantic-release/git": "^10.0.0",
     "@storybook/addon-docs": "^7.6.20",
     "@storybook/addon-links": "^7.6.19",
-    "@storybook/builder-vite": "7.6.17",
+    "@storybook/builder-vite": "9.1.5",
     "@storybook/storybook-deployer": "^2.8.16",
     "@storybook/web-components": "7.6.17",
     "@storybook/web-components-vite": "^7.6.20",
