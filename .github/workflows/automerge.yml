@@ -19,7 +19,7 @@ jobs:
       - name: Wait for PR checks to complete
         run: |
           while true; do
-            result=$(gh pr checks --json workflow,name,state "$PR_URL" | jq -e '.[] | select(.workflow != "Auto Approve and Merge PRs") | select(.state != "success" and .state != "skipped") | length > 0')
+            result=$(gh pr checks --json workflow,name,state "$PR_URL" | jq -e '.[] | select(.workflow != "Auto Approve and Merge PRs") | select(.state != "SUCCESS" and .state != "SKIPPED") | length > 0')
             if [ $? -eq 0 ]; then
               echo "Checks still running or failed"
               sleep 10
