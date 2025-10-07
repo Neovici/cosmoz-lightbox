@@ -4,7 +4,37 @@ on:
   pull_request_target:
     types: [opened, synchronize, reopened]
 
+permissions:
+  contents: write
+  pull-requests: write
+
+env:
+  PR_URL: ${{github.event.pull_request.html_url}}
+
 jobs:
-  auto-approve-merge-dependabot:
-    uses: Neovici/cfg/.github/workflows/automerge.yml@master
-    secrets: inherit
+  auto-approve-and-merge:
+    runs-on: ubuntu-latest
+    if: github.event.pull_request.user.login == 'dependabot[bot]'
+    steps:
+      - name: Wait for PR checks to complete
+        run: |
+          while true; do
+            result=$(gh pr checks --json workflow,name,state "$PR_URL" | jq -e '.[] | select(.workflow != "Auto Approve and Merge PRs") | select(.state != "success" and .state != "skipped") | length > 0')
+            if [ $? -eq 0 ]; then
+              echo "Checks still running or failed"
+              sleep 10
+            else
+              echo "All filtered checks passed"
+              break
+            fi
+          done
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Enable auto-approve
+        run: gh pr review --approve "$PR_URL"
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: Enable auto-merge
+        run: gh pr merge --auto --merge "$PR_URL"
+        env:
+          GH_TOKEN: ${{secrets.GITHUB_TOKEN}}
