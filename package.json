@@ -68,7 +68,7 @@
     "@neovici/cosmoz-slider": "^5.2.1",
     "@neovici/cosmoz-utils": "^6.17.0",
     "@pionjs/pion": "^2.10.0",
-    "lit-html": "^3.3.1"
+    "lit-html": "^3.3.2"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
