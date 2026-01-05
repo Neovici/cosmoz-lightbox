@@ -72,7 +72,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^20.2.0",
-    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/config-conventional": "^20.3.0",
     "@neovici/cfg": "^2.7.5",
     "@open-wc/testing": "^4.0.0",
     "@semantic-release/changelog": "^6.0.0",
